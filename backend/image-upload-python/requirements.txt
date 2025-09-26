@@ -1,0 +1,7 @@
+# Uncomment to enable Azure Monitor OpenTelemetry
+# Ref: aka.ms/functions-azure-monitor-python 
+# azure-monitor-opentelemetry 
+
+azure-functions==1.23.0
+openai==1.109.1
+Pillow==11.1.0
