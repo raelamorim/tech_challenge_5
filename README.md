@@ -3,7 +3,6 @@
 Projeto de análise de imagens de arquitetura de sistemas usando o modelo STRIDE, com backend em **Python (Azure Functions)** e frontend em **Angular**.  
 O sistema permite enviar imagens, gerar anotações automáticas e uma análise detalhada em Markdown.
 
----
 
 ## Estrutura do repositório
 
@@ -71,10 +70,43 @@ ng serve
 
 O frontend será servido em `http://localhost:4200`.
 
----
+
+
+### Deploy do Frontend Angular no Azure Blob Storage
+
+#### Pré-requisitos
+
+* Conta Azure com Storage Account criada
+* Container configurado com Static Website habilitado
+* Angular CLI instalada
+
+#### Passos para build e deploy
+
+1. Build do Angular para produção
+    ```bash
+    cd frontend
+    cd image-upload-angular
+    ng build --configuration production
+    ```
+
+    O build será gerado na pasta `dist/image-upload-angular`
+
+2. Habilitar site estático no Azure Storage
+    * Acesse o portal Azure → sua Storage Account → Static website → Ative o recurso.
+    * Defina index.html como Index document.
+    * Defina index.html como Error document (mesmo arquivo, devido particularidade do angular).
+
+3. Subir arquivos via portal
+    * Vá em Containers → seu container público.
+    * Clique em Upload → selecione todos os arquivos e pastas da pasta `dist/image-upload-angular/browser`.
+
+4. Acessar o site
+    * Após upload, acesse a URL fornecida na seção Static website do portal Azure.
+    * O Angular estará disponível como site estático.
+
+Dica: Para atualizações futuras, repita o build e substitua os arquivos no container.
 
 ## Funcionamento
-
 1. Acesse o frontend.
 2. Faça upload de uma imagem.
 3. O backend envia a imagem para o modelo STRIDE e gera:
