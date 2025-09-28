@@ -1,4 +1,5 @@
 import base64
+import logging
 import os
 import sys
 
@@ -18,8 +19,8 @@ class MockImageService(ImageService):
         self.md_path = os.path.join(self.base_path, "../assets/mock-doc.md")
 
     def get_image_and_markdown(self, image) -> dict:
-        print("MockImageService: retornando dados mockados.")
-        print(f"Imagem recebida: {image[:100] + "..." if image and len(image) > 100 else image }")
+        logging.info("MockImageService: retornando dados mockados.")
+        logging.info(f"Imagem recebida: {image[:100] + '...' if image and len(image) > 100 else image }")
         
         if not os.path.exists(self.img_path) or not os.path.exists(self.md_path):
             raise FileNotFoundError("Arquivo(s) não encontrado(s) no diretório ./assets.")
