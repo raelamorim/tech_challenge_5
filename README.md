@@ -94,8 +94,6 @@ Contém todo o código do frontend em **Angular**, responsável pela interface d
 - **src/**  
   Pasta raiz de código-fonte criada automaticamente pelo Angular CLI (pode conter estilos globais, environments, etc.).
 
----
-
 ### Arquivo `README.md`
 Documento principal do repositório.  
 Explica o propósito do projeto, instruções de setup, deploy e boas práticas.
